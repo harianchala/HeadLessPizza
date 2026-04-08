@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+  <title>Headless Pizza 🍕</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <script type="module" crossorigin src="/assets/index-BhqLdU5U.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DiAAdkOm.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+html { 
+  font-size: 62.5%; 
+  scroll-behavior: smooth; 
+}
+
+body { 
+  background: #eee; 
+  font-family: 'Inter', sans-serif; 
+}
+
+
+@media (max-width: 75em) { html { font-size: 60%; } }
+@media (max-width: 56.25em) { html { font-size: 58%; } }
+@media (max-width: 37.5em) { html { font-size: 56%; } }
+
+.container { 
+  max-width: 110rem; 
+  width: 90%; 
+  margin: auto; 
+}
+.header { padding: 2rem; background: rgb(250, 250, 250);
+     display: flex;
+      justify-content: space-between;
+       align-items: center; 
+       box-shadow: rgba(40, 44, 63, 0.15) 0px 15px 40px -20px; 
+       position: fixed; width: 100%; top: 0; z-index: 100;
+     } .header__logo-cont { 
+        width: 25rem; 
+    } .header__logo-cont img
+     { 
+        width: 100%; 
+    } 
+     .header__search { 
+        display: flex; border-radius: 5px;
+         overflow: hidden; 
+         background: rgb(238, 238, 238); 
+         border: 2px solid rgb(204, 204, 204);
+         
+         } 
+        
+             .header__search-submit
+              {
+                 display: flex; 
+                 align-items: center; 
+                 justify-content: center;
+                  padding: 1rem 1.5rem;
+                   
+                 }
+                  .header__search-input 
+         {
+             padding: 1rem 2rem; 
+             font-size: 1.6rem;
+              font-weight: 500;
+               width: 40rem; 
+             
+              background: #eee;; 
+              font-family: Inter, sans-serif;;
+              
+             } 
+                
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1.4rem 4rem 1.4rem 2rem; 
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #eee;
+  font-size: 1.6rem;
+  color: #555;
+  outline: none;
+}
+
+
+.search-box input::placeholder {
+  color: #777;
+  font-size: 1.6rem;
+  font-display: block;
+  font-weight: 500;
+}
+
+
+.search-box i {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1.9rem;
+  pointer-events: none;
+}
+.main-content { padding: 16rem 0; }
+
+.main-content__upper-title { 
+  font-size: 2rem; 
+  color: #777; 
+  margin-bottom: 3rem;
+}
+
+.main-content__upper-title span { 
+  color: #333; 
+  font-weight: 800; 
+}
+
+
+.items { 
+  display: grid; 
+  gap: 2rem; 
+  grid-template-columns: repeat(4, 1fr); 
+}
+
+@media (max-width: 56.25em) { 
+  .items { grid-template-columns: repeat(3, 1fr); } 
+}
+
+@media (max-width: 37.5em) { 
+  .items { grid-template-columns: repeat(2, 1fr); } 
+}
+
+
+.item { 
+  cursor: pointer; 
+  background: #fafafa; 
+  padding: 1rem; 
+  border-radius: 5px; 
+  transition: 0.2s; 
+  box-shadow: 0 1px 4px rgba(0,0,0,0.16); 
+}
+.item__img-cont {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.item__img-cont img {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+}
+
+
+.item__img-cont::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40%; 
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.item:hover { 
+  transform: translateY(-5px); 
+}
+
+.item__img-cont { 
+  margin-bottom: 1.5rem; 
+  overflow: hidden; 
+  border-radius: 5px; 
+  
+}
+
+.item__img-cont img { 
+  width: 100%; 
+  height: 20rem; 
+  object-fit: cover; 
+  
+}
+
+.item__name { 
+  font-size: 1.8rem; 
+  color: #555; 
+  font-weight: 800; 
+  margin-bottom: 1rem; 
+}
+
+.item__highlights { 
+  display: flex; 
+  justify-content: space-between; 
+}
+
+.item__rating-icon-cont { 
+  background: #0da729; 
+  width: 2rem; 
+  height: 2rem; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.item__rating i { 
+  color: white; 
+  font-size: 1.3rem; 
+}
+
+.item__price { 
+  font-size: 1.4rem; 
+  font-weight: 700; 
+  color: #555; 
+  background: #eee; 
+  padding: 0.5rem; 
+  border-radius: 5px; 
+}
+
+
+.footer { 
+  background: #111; 
+  color: #ccc; 
+  padding: 6rem 0; 
+}
+
+.footer__container { 
+  max-width: 110rem; 
+  width: 90%; 
+  margin: auto; 
+}
+
+.footer__upper { 
+  display: grid; 
+  grid-template-columns: 1.5fr 1fr; 
+  gap: 4rem; 
+}
+
+.footer__logo-cont img { 
+  width: 17rem; 
+}
+
+.footer__text {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.footer__socials i {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.footer__socials i:hover {
+  color: #fc8019;
+}
+
+
+.footer__newsletter h1 {
+  font-size: 2.4rem;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.footer__newsletter-form {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer__newsletter-form input {
+  flex: 1;
+  padding: 1.2rem;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  background: transparent;
+  color: white;
+}
+
+.footer__newsletter-form button {
+  padding: 1.2rem 2rem;
+  background: #fc8019;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.footer__lower {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 4rem;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+}
+.item__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.item__rating-icon-cont {
+  background: #0da729;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.item__rating i {
+  color: white;
+  font-size: 1.3rem;
+}
+
+
+.item__rating div {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #777; 
+}
+
+@media (max-width: 56.25em) {
+    .header__search-input {
+        width: 30rem;
+    }
+}
+</style>
+</head>
+
+<body>
+<div id="root">
+
+
+<div class="header">
+    <div class="header__logo-cont">
+        <img src="./multimedia/image.png" alt="Headless Pizza">
+    </div>
+
+    <div class="search-box">
+   
+    <input type="text" placeholder="Search for your favorite Pizza">
+     <i class="fa-solid fa-magnifying-glass"></i>
+</div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="main-content">
+        <div class="main-content__upper">
+            <h2 class="main-content__upper-title">
+                Showing our <span>Pizza Menu</span>
+            </h2>
+        </div>
+
+        <div class="items">
+            <div class="item">
+                <div class="item__img-cont">
+                    <img src="./multimedia/image1.png">
+                </div>
+                <h3 class="item__name">BBQ Chicken Pizza</h3>
+                <div class="item__highlights">
+                    <div class="item__rating">
+                        <div class="item__rating-icon-cont">
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div>4.6</div>
+                    </div>
+                    <div class="item__price">$16.25</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item__img-cont">
+                   <img src="./multimedia/image2.png">
+                </div>
+                <h3 class="item__name">BBQ Chicken Pizza</h3>
+                <div class="item__highlights">
+                    <div class="item__rating">
+                        <div class="item__rating-icon-cont">
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div>4.6</div>
+                    </div>
+                    <div class="item__price">$16.25</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item__img-cont">
+                    <img src="./multimedia/image3.png">
+                </div>
+                <h3 class="item__name">BBQ Chicken Pizza</h3>
+                <div class="item__highlights">
+                    <div class="item__rating">
+                        <div class="item__rating-icon-cont">
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div>4.6</div>
+                    </div>
+                    <div class="item__price">$16.25</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item__img-cont">
+                    <img src="./multimedia/image4.png">
+                </div>
+                <h3 class="item__name">BBQ Chicken Pizza</h3>
+                <div class="item__highlights">
+                    <div class="item__rating">
+                        <div class="item__rating-icon-cont">
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div>4.6</div>
+                    </div>
+                    <div class="item__price">$16.25</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item__img-cont">
+                    <img src="./multimedia/image5.png">
+                </div>
+                <h3 class="item__name">BBQ Chicken Pizza</h3>
+                <div class="item__highlights">
+                    <div class="item__rating">
+                        <div class="item__rating-icon-cont">
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div>4.6</div>
+                    </div>
+                    <div class="item__price">$16.25</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item__img-cont">
+                    <img src="./multimedia/image6.png">
+                </div>
+                <h3 class="item__name">BBQ Chicken Pizza</h3>
+                <div class="item__highlights">
+                    <div class="item__rating">
+                        <div class="item__rating-icon-cont">
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div>4.6</div>
+                    </div>
+                    <div class="item__price">$16.25</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item__img-cont">
+                    <img src="./multimedia/image7.png">
+                </div>
+                <h3 class="item__name">BBQ Chicken Pizza</h3>
+                <div class="item__highlights">
+                    <div class="item__rating">
+                        <div class="item__rating-icon-cont">
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div>4.6</div>
+                    </div>
+                    <div class="item__price">$16.25</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item__img-cont">
+                    <img src="./multimedia/image8.png">
+                </div>
+                <h3 class="item__name">BBQ Chicken Pizza</h3>
+                <div class="item__highlights">
+                    <div class="item__rating">
+                        <div class="item__rating-icon-cont">
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div>4.6</div>
+                    </div>
+                    <div class="item__price">$16.25</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item__img-cont">
+                    <img src="./multimedia/image9.png">
+                </div>
+                <h3 class="item__name">BBQ Chicken Pizza</h3>
+                <div class="item__highlights">
+                    <div class="item__rating">
+                        <div class="item__rating-icon-cont">
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div>4.6</div>
+                    </div>
+                    <div class="item__price">$16.25</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__upper">
+
+            <div class="logo_area">
+                <div class="footer__logo-cont">
+                 <p class="footer__text"><img src="./multimedia/image.png"><br>
+                    Headless Pizza is a demo app showcase Pizza menu built<br>using Wix Studio's Headless CMS as the Backend along with<br>React JS as the Frontend
+                
+                <div class="footer__socials">
+                    <i class="bx bxl-instagram"></i>
+                    <i class="bx bxl-twitter"></i>
+                    <i class="bx bxl-youtube"></i>
+                    <i class="bx bxl-linkedin"></i>
+                    <i class="bx bxl-whatsapp"></i>
+                </div></p>
+                </div>
+            </div>
+
+            <div class="footer__newsletter">
+                <h1>Subscribe</h1>
+                <br><br>
+                <form class="footer__newsletter-form">
+                    <input id="final_input" placeholder="johndoe@gmail.com">
+                        <button>Subscribe</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer__lower">
+            © 2024 Headless Pizza Limited
+        </div>
+    </div>
+</footer>
+</div>
+</body>
+</html>
